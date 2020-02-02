@@ -12,8 +12,9 @@ module.exports = {
       {
         test: /.js$/,
         loader: 'babel-loader',
+        // babel-loaderのオプションとしてes2015とreactを指定
         options: {
-          presets: ['es2015', 'react']
+          presets: ['@babel/env', '@babel/react']
         }
       }
     ]
