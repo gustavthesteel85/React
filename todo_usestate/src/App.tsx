@@ -67,7 +67,7 @@ interface ItemInterface {
 
 const App: React.FC = () => {
   // useState<型>(初期値)
-  const [text, setText] = React.useState<string>("initial value");
+  const [text, setText] = React.useState<string>("");
   const [items, setItems] = React.useState<ItemInterface[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
