@@ -1,3 +1,4 @@
+import React, { createContext, useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import Counter from './components/Counter'
@@ -8,8 +9,14 @@ import EffectHook from './components/EffectHook'
 import MouseEventEffectHook from './components/MouseEventEffectHook'
 import DataFetchEffectHook from './components/DataFetchEffectHook'
 import DataFetchById from './components/DataFetchById'
+import ComponentC from './components/ComponentC'
+import CounterReducer from './components/CounterReducer'
 
+export const UserContext = createContext();
+export const LanguageContext = createContext();
 function App() {
+  const [user, setUser] = useState({ name: 'yamada', age: '32' });
+  const [lang, setLang] = useState('日本語');
   return (
     <div className="App">
       <header className="App-header">
@@ -25,14 +32,20 @@ function App() {
         >
           Learn React
         </a>
-        <Counter />
+        <UserContext.Provider value={user}>
+          <LanguageContext.Provider value={lang}>
+            <ComponentC />
+          </LanguageContext.Provider>
+        </UserContext.Provider>
+        {/* <Counter />
         <FormHook />
         <ItemHook />
         <ClassEffectComponent />
         <EffectHook />
         <MouseEventEffectHook />
         <DataFetchEffectHook />
-        <DataFetchById />
+        <DataFetchById /> */}
+        <CounterReducer />
       </header>
     </div>
   );
