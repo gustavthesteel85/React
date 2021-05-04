@@ -13,6 +13,8 @@ import ComponentA from './components/ComponentA'
 import ComponentB from './components/ComponentB'
 import ComponentC from './components/ComponentC'
 import CounterReducer from './components/CounterReducer'
+//import WrapComponent from './components/nousecallback/WrapComponent'
+import WrapComponent from './components/usecallback/WrapComponent'
 import axios from 'axios'
 
 export const UserContext = createContext();
@@ -61,16 +63,16 @@ const reducer = (state, action) => {
 function App() {
   // const [user, setUser] = useState({ name: 'yamada', age: '32' });
   // const [lang, setLang] = useState('日本語');
-  const [state, dispatch] = useReducer(reducer, initial);
-  useEffect(() => {
-    const req = axios.get('https://jsonplaceholder.typicode.com/posts/1');
-    req.then(res => {
-      dispatch({type: 'FETCH_SUCCESS', payload: res.data});
-    }).catch(err =>{
-      dispatch({type: 'FETCH_ERROR'});
-    })
-  }, [])
-console.log(state)
+  // const [state, dispatch] = useReducer(reducer, initial);
+  // useEffect(() => {
+  //   const req = axios.get('https://jsonplaceholder.typicode.com/posts/1');
+  //   req.then(res => {
+  //     dispatch({type: 'FETCH_SUCCESS', payload: res.data});
+  //   }).catch(err =>{
+  //     dispatch({type: 'FETCH_ERROR'});
+  //   })
+  // }, [])
+
   return (
     <div className="App">
         {/* <UserContext.Provider value={user}>
@@ -92,8 +94,10 @@ console.log(state)
           <ComponentB />
           <ComponentC />
         </CountContext.Provider> */}
-      <h1>{state.loading ? 'Loading....' : state.post.title}</h1>
-      <h1>{state.error ? state.error : null}</h1>
+      {/* <h1>{state.loading ? 'Loading....' : state.post.title}</h1>
+      <h1>{state.error ? state.error : null}</h1> */}
+      {/* useMemo、useCallbackを使わない場合はボタンを押すたびに全てのconsole.logが描画される */}
+      <WrapComponent/>
     </div>
   );
 }
