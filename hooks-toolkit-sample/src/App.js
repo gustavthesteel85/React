@@ -1,10 +1,15 @@
-import './App.css';
-import Appp from './components/Appp'
+import React from 'react';
+import TaskForm from './components/features/task/TaskForm';
+import Header from './components/header/Header'
+import styles from './styles/App.module.scss'
 
 function App() {
   return (
-    <div className="App">
-      <Appp />
+    <div className={styles.root}>
+      <div className={styles.wrapper}>
+        <Header />
+        <TaskForm />
+      </div>
     </div>
   );
 }
